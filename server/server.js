@@ -9,11 +9,15 @@ const server = http.createServer(app)
 const io = new Server(server, {
     cors: {
         origin: 'http://localhost:5173',
-        methods: ['GET', 'POST']
+        methods: ["GET", "POST"]
     }
 })
 io.on("connection", (socket)=>{
     console.log(`USER CONNECTED: ${socket.id}`)
+    socket.on("send-message", (message)=>{
+        //Truyền tin nhắn đã gửi trong khi còn kết nối cổng socket.io
+        io.emit("received-message", message)
+    })
     socket.on("disconnect", ()=>{
         console.log("USER DISCONNECTED!")
     })

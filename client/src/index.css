@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+*{
+    scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar{
+    width: 5px;
+}
+
+::-webkit-scrollbar-thumb{
+    border-radius: 30px;
+    transition: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background-color: rgb(209, 208,208);
+}
