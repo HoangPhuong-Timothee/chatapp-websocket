@@ -13,13 +13,13 @@ const io = new Server(server, {
     }
 })
 io.on("connection", (socket)=>{
-    console.log(`USER CONNECTED: ${socket.id}`)
+    console.log(`USER HAS CONNECTED: ${socket.id}`)
     socket.on("send-message", (message)=>{
         //Truyền tin nhắn đã gửi trong khi còn kết nối cổng socket.io
         io.emit("received-message", message)
     })
     socket.on("disconnect", ()=>{
-        console.log("USER DISCONNECTED!")
+        console.log(`USER WITH ID: ${socket.id} HAS DISCONNECTED!`)
     })
 })
 server.listen(5000, ()=>{
