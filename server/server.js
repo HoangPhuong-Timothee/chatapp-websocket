@@ -15,7 +15,6 @@ const io = new Server(server, {
 io.on("connection", (socket)=>{
     console.log(`USER HAS CONNECTED: ${socket.id}`)
     socket.on("send-message", (message)=>{
-        //Truyền tin nhắn đã gửi trong khi còn kết nối cổng socket.io
         io.emit("received-message", message)
     })
     socket.on("disconnect", ()=>{
